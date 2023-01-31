@@ -2,7 +2,7 @@ Sample Simple Python Github Actions Workflow
 **************************************************************
 
 In this example, we will see a workflow that will setup python, install many dependencies and then run a python script using a mixture of actions and commands.
-The workflow is given at `.github/workflows/python_simple.yaml <../_static/github_actions/python_simple.yml>`_
+The workflow is given at `.github/workflows/python_simple.yml <../_static/github_actions/python_simple.yml>`_
 
 For the workflow we will include the OS that the workflow will use, things such as python versions, permissions and other important settings.
 For this example, we will populate the `runs-on` field to configure the workflow to use windows-2019.
