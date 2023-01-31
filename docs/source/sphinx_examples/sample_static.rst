@@ -8,6 +8,7 @@ Alternatively, you can use Sphinx directives to accomplish additional cool stuff
 .. code-block::
    :caption: A code block example
 
-    name: Simple-CI
+    def dummy_function():
+        pass
 
 .. This is a comment block that does not show up in the documentation
