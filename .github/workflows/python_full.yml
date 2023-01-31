@@ -33,7 +33,7 @@ jobs:
           python -m pytest --cov=src unittests/ --cov-report term --cov-report html:./docs/source/_static/code_cov/
       - name: Sphinx build
         run: |
-          cp -a ./.github/workflows/. ./docs/source/_static/github_actions
+          xcopy /s /Y .\.github\workflows\. .\docs\source\_static\github_actions
           sphinx-build -b html ./docs/source ./docs/build
           sphinx-build -b doctest ./docs/source ./docs/build
       - name: Deploy documentation to gh-pages
