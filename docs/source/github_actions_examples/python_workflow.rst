@@ -1,10 +1,5 @@
-Sample Simple Github Actions Workflow
+Sample Python Github Actions Workflow
 *************************************
-
-Github workflows are incredibly powerful tools.
-We will first start with a very basic workflow, then build it up to a comprehensive workflow that can be used to test, build documentation and perform other important tasks.
-
-Let's start by looking at the most basic workflow possible given at `.github/workflows/simple.yaml <../_static/github_actions/simple.yml>`_ and breaking it down.
 
 First, new need to define the name of the workflow and when the workflow run.
 To define when the workflow will run, you can specify a list of different event types under the `on` parameter in the workflow.
