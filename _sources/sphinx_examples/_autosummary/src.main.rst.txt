@@ -1,0 +1,31 @@
+src.main
+========
+
+.. automodule:: src.main
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+      :nosignatures:
+   
+      dummy_function
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

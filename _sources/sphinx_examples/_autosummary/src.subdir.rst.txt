@@ -1,0 +1,30 @@
+src.subdir
+==========
+
+.. automodule:: src.subdir
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+   src.subdir.submodule
+

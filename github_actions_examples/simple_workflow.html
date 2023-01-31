@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sample Simple Github Actions Workflow &#8212; CI-Workflows  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sample Simple Python Github Actions Workflow" href="python_simple_workflow.html" />
+    <link rel="prev" title="Sample Linked File" href="../sphinx_examples/sample_linked_file.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="python_simple_workflow.html" title="Sample Simple Python Github Actions Workflow"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../sphinx_examples/sample_linked_file.html" title="Sample Linked File"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CI-Workflows  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sample Simple Github Actions Workflow</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="sample-simple-github-actions-workflow">
+<h1>Sample Simple Github Actions Workflow<a class="headerlink" href="#sample-simple-github-actions-workflow" title="Permalink to this heading">¶</a></h1>
+<p>Github workflows are incredibly powerful tools.
+We will first start with a very basic workflow, then build it up to a comprehensive workflow that can be used to test, build documentation and perform other important tasks.</p>
+<p>Let’s start by looking at the most basic workflow possible given at <a class="reference external" href="../_static/github_actions/simple.yml">.github/workflows/simple.yml</a> and breaking it down.</p>
+<p>First, new need to define the name of the workflow and when the workflow run.
+To define when the workflow will run, you can specify a list of different event types under the <cite>on</cite> parameter in the workflow.
+An exhaustive list of events is available in the github actions documentation.
+In this example, the workflow will run on a push to the <cite>main</cite> branch.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Name and trigger even</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">name</span><span class="p">:</span> <span class="n">Simple</span><span class="o">-</span><span class="n">CI</span>
+
+ <span class="n">on</span><span class="p">:</span>
+     <span class="n">push</span><span class="p">:</span>
+         <span class="n">branches</span><span class="p">:</span> <span class="p">[</span> <span class="n">main</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Additionally, we will specify a <cite>concurrency</cite> parameter and an image name.
+For this example, we will run on windows 2019.
+For the concurrency, what <cite>concurrency.group</cite> does is that it specifies some sort of group ID, such that only one instance per group ID will run at any given moment.
+In our case, we will set the concurrency group to the branch name and workflow name.
+This means that only one instance of this workflow can run per branch at any given moment.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Name and trigger even</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> name: Simple-CI
+
+ on:
+     push:
+         branches: [ main ]
+
+ jobs:
+     build:
+         runs-on: windows-2019
+         concurrency:
+             group: ${{ github.workflow }}-${{ github.ref }}
+</pre></div>
+</div>
+</div>
+<p>Finally, with the basic workflow settings defined, we can specify the steps for the workflow.
+For each step, we can either run an action or run a raw command.
+For simplicity, we will simply provide a step name and run a single command to print the current date.
+The format for a command step is to provide a <cite>name:</cite> string and to give a sequence of multiple bash commands to run to the <cite>run:</cite> block.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Name and trigger even</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> name: Simple-CI
+
+ on:
+     push:
+         branches: [ main ]
+
+ jobs:
+     build:
+         runs-on: windows-2019
+         concurrency:
+             group: ${{ github.workflow }}-${{ github.ref }}
+         steps:
+             - name: Run a simple command
+               run: |
+                 date
+</pre></div>
+</div>
+</div>
+<p>In conclusion, we now have a simple workflow that will run once per branch on a push to main, that will use windows 2019 to print the date.
+In the next examples, we will see how to use actions to accomplish more complex tasks.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../sphinx_examples/sample_linked_file.html"
+                          title="previous chapter">Sample Linked File</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="python_simple_workflow.html"
+                          title="next chapter">Sample Simple Python Github Actions Workflow</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/github_actions_examples/simple_workflow.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="python_simple_workflow.html" title="Sample Simple Python Github Actions Workflow"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../sphinx_examples/sample_linked_file.html" title="Sample Linked File"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CI-Workflows  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sample Simple Github Actions Workflow</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Phillip Williams.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

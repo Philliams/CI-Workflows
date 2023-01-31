@@ -1,0 +1,6 @@
+src.main.dummy\_function
+========================
+
+.. currentmodule:: src.main
+
+.. autofunction:: dummy_function

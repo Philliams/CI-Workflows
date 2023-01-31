@@ -1,0 +1,6 @@
+src.subdir.submodule.dummy\_function
+====================================
+
+.. currentmodule:: src.subdir.submodule
+
+.. autofunction:: dummy_function
