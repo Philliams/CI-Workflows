@@ -18,6 +18,6 @@ run:
 	python -m src.main
 
 doc: test
-	cp -a ./.github/. ./docs/source/_static/github_actions
+	cp -a ./.github/workflows/. ./docs/source/_static/github_actions
 	sphinx-build -b html ./docs/source ./docs/build
 	sphinx-build -b doctest ./docs/source ./docs/build
