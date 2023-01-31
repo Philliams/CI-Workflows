@@ -27,6 +27,6 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install flake8 flake8-match pre-commit pytest
         pip install -r ./dependencies/requirements.txt
-      - name: Run a simple python command
-        run: |
-          python -m src.main
+    - name: Run a simple python command
+      run: |
+        python -m src.main
