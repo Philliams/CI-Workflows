@@ -28,7 +28,7 @@ Building the Sphinx documentation from `/docs/source` to `/docs/build`:
 
     - name: Sphinx build
         run: |
-          cp -a ./.github/workflows/. ./docs/source/_static/github_actions
+          xcopy /s /Y .\.github\workflows\. .\docs\source\_static\github_actions
           sphinx-build -b html ./docs/source ./docs/build
           sphinx-build -b doctest ./docs/source ./docs/build
 

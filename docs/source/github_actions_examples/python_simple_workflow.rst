@@ -91,6 +91,7 @@ Finally `with: ...` allows us to provide parameters to the action.
                   uses: actions/setup-python@v2
                   with:
                     python-version: ${{ matrix.python-version }}
+                - 
 
 Once the code is checked out and python has been installed, we will use `run:` to provide raw commands for the workflow to run.
 In this example, we will first install all the requirements via pip and the checked out `requirements.txt` file.
@@ -131,7 +132,7 @@ Afterwards, we will run `main.py` by invoking `python -m src.main`.
                   run: |
                     python -m src.main
 
-In conclusion, we now have a workflow called `Simple-CI` that will run on a push to `main`.
+In conclusion, we now have a workflow called `Python-Simple-CI` that will run on a push to `main`.
 It will use `windows-2019` and `python-3.10`.
 The workflow will have permission to read/write and will only run one instance per branch at any given moment.
 Finally, it will install python and checkout the code via actions, and install the dependencies and run `main.py` via commands.

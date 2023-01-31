@@ -25,6 +25,7 @@ Github Actions Examples
 
    github_actions_examples/simple_workflow
    github_actions_examples/python_simple_workflow
+   github_actions_examples/python_full_workflow
 
 
 Indices and tables
