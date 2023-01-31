@@ -24,6 +24,7 @@ Github Actions Examples
    :maxdepth: 2
 
    github_actions_examples/simple_workflow
+   github_actions_examples/python_simple_workflow
 
 
 Indices and tables

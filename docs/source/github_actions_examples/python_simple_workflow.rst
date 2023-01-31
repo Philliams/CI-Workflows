@@ -1,23 +1,14 @@
-Sample Python Github Actions Workflow
-*************************************
+Sample Simple Python Github Actions Workflow
+**************************************************************
 
-First, new need to define the name of the workflow and when the workflow run.
-To define when the workflow will run, you can specify a list of different event types under the `on` parameter in the workflow.
-An exhaustive list of events is available in the github actions documentation.
-In this example, the workflow will run on a push to the `main` branch.
+In this example, we will see a workflow that will setup python, install many dependencies and then run a python script using a mixture of actions and commands.
+The workflow is given at `.github/workflows/python_simple.yaml <../_static/github_actions/python_simple.yml>`_
 
-.. code-block::
-   :caption: Name and trigger even
-
-    name: Simple-CI
-
-    on:
-        push:
-            branches: [ main ]
-
-Next, we can define the actual job itself. This will include the OS that the workflow will use, things such as python versions, permissions and other important settings.
+For the workflow we will include the OS that the workflow will use, things such as python versions, permissions and other important settings.
 For this example, we will populate the `runs-on` field to configure the workflow to use windows-2019.
 Additionally, we can specify a matrix of python versions if we want to test multiple versions.
+The matrix will make the workflow run for each combinations of values in the matrix.
+This can be used to run different version of python (as we will see), but really can be used to provide any number of strings to trigger various configurations in the workflow.
 
 .. code-block::
    :caption: OS and python versions
@@ -125,7 +116,8 @@ Afterwards, we will run `main.py` by invoking `python -m src.main`.
             concurrency:
                 group: ${{ github.workflow }}-${{ github.ref }}
             steps:
-                - uses: actions/checkout@v2
+                - name: Checkout code
+                  uses: actions/checkout@v2
                 - name: Set up Python ${{ matrix.python-version }}
                   uses: actions/setup-python@v2
                   with:

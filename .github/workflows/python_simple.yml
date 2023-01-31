@@ -1,5 +1,5 @@
 # Built from this template : https://github.com/actions/setup-python
-name: Python-CI
+name: Python-Simple-CI
 
 on:
   push:
