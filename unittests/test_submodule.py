@@ -1,7 +1,7 @@
 from src.subdir import submodule
 
-class TestMain:
 
+class TestMain:
     def test_dummy_function(self):
         # Prepare
         a = 1

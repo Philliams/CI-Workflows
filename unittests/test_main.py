@@ -1,7 +1,7 @@
 from src import main
 
-class TestMain:
 
+class TestMain:
     def test_dummy_function(self):
         # Prepare
         a = 1

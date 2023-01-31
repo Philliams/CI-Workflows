@@ -1,4 +1,4 @@
-def dummy_function(a:int, b:int, c: int) -> int:
+def dummy_function(a: int, b: int, c: int) -> int:
     """
     This is a dummy function to demonstrate docstrings being used to generate
     automatic documentation in a submodule.
