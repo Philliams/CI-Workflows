@@ -1,0 +1,21 @@
+# Built from this template : https://github.com/actions/setup-python
+name: Simple-CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        python-version: ['3.10']
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: Run a simple python command
+        run: |
+          python -m main
